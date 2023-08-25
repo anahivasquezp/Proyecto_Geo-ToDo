@@ -1,0 +1,42 @@
+<mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="submit()">
+            <p *ngIf="error" class="error">
+                {{error}}
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label>Nombre de Usuario</mat-label>
+                    <input type="text" id="username" matInput formControlName="username">
+                    <mat-hint *ngIf="loginFormControls.username.invalid 
+                        && (loginFormControls.username.dirty || loginFormControls.username.touched)">
+                        <div *ngIf="loginFormControls.username.errors?.['required']">
+                            Usuario es requerido
+                        </div>
+                        <div *ngIf="loginFormControls.username.errors?.['minlength']">
+                            El usuario debe tener al menos 4 caracteres
+                        </div> 
+                        <div *ngIf="loginFormControls.username.errors?.['email']">
+                            El usuario debe ser correo electrónico
+                        </div>                        
+                    </mat-hint>
+                </mat-form-field>
+            </p>
+            
+            <p>
+                <mat-form-field>
+                    <mat-label>Clave</mat-label>
+                    <input type="password" id="password" matInput formControlName="password">
+                    <mat-hint *ngIf="loginFormControls.passwordinvalid 
+                        && (loginFormControls.passwordirty || loginFormControls.passwordouched)">
+                        Clave es requerida
+                    </mat-hint>
+                </mat-form-field>
+            </p>
+            <div class="button">
+                <button type="submit" mat-button>Login</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
