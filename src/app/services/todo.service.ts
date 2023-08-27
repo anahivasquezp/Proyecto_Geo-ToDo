@@ -10,25 +10,36 @@ export class TodoService {
   firestoreCollection: AngularFirestoreCollection;
 
   constructor(private firestore: AngularFirestore, private afAuth: AngularFireAuth) {
-    this.firestoreCollection = firestore.collection('todos');
+    this.firestoreCollection = firestore.collection('prueba');
   }
 
-  addTodoWithUserId(title: string, userId: string) {
+  addTodoWithUserId(
+    userId: string,
+    task_name: string, 
+    task_description : string,
+    task_date: string,
+    //isDone: boolean,
+    task_location: string,
+    ) {
     this.firestoreCollection.add({
-      title: title,
+      userId: userId,
+      task_name: task_name, 
+      task_description : task_description,
+      task_date: task_date,
       isDone: false,
-      userId: userId
+      task_location: task_location,
+      
     });
   }
 
-  addTodo(title: string) {
+  /*addTodo(title: string) {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         const userId = user.uid;
         this.addTodoWithUserId(title, userId);
       }
     });
-  }
+  }*/
 
   updateTodoStatus(id: string, newStatus: boolean) {
     this.firestoreCollection.doc(id).update({ isDone: newStatus });

@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoService } from '../shared/todo.service';
+import { TodoService } from '../../services/todo.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
-
 @Component({
-  selector: 'app-todo',
-  templateUrl: './todo.component.html',
-  styles: [
-  ]
+  selector: 'app-todo-list',
+  templateUrl: './todo-list.component.html',
+  styleUrls: ['./todo-list.component.css']
 })
-export class TodoComponent implements OnInit {
+export class TodoListComponent implements OnInit {
 
   todos: any[] = [];
 
@@ -33,7 +31,7 @@ export class TodoComponent implements OnInit {
       });
     }
 
-  onClick(titleInput: HTMLInputElement) {
+  /*onClick(titleInput: HTMLInputElement) {
     if (titleInput.value) {
       this.afAuth.authState.subscribe(user => {
         if (user) {
@@ -43,7 +41,7 @@ export class TodoComponent implements OnInit {
         }
       });
     }
-  }
+  }*/
 
   onStatusChange(id: string, newStatus: boolean) {
     this.todoService.updateTodoStatus(id, newStatus);
