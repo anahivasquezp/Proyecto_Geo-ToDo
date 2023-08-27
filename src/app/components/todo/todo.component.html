@@ -1,0 +1,43 @@
+<div class="container">
+    <div class=" justify-content-center">
+        <div class="">
+            <div class="card shadow-lg mt-5">
+                <div class="card-header text-center py-4 border-0">
+                    <h1 class=" fw-bold">Add new task</h1>
+                </div>
+                <div class=" p-4">
+                <!-- Inputs para crear nuevas tareas-->
+                    <div class="">
+                        <h1>Add Name</h1>
+                        <input type="text" class="border-0 py-3 shadow-none" 
+                            placeholder="Name goes here" #nameInput>
+                        <h1>Add Description</h1>
+                        <input type="text" class="border-0 py-3 shadow-none"
+                        placeholder="Description goes here" #descriptionInput>
+                        <h1>Add date</h1>
+                        <input type="text" class="border-0 py-3 shadow-none"
+                        placeholder="Date goes here" #dateInput>
+                        <h1>Location</h1> <!-- implementar API-->
+                        <input type="text" class="border-0 py-3 shadow-none"
+                        placeholder="Location goes here" #locationInput>
+                        
+                        <h1>Categories</h1>
+                        <button class="m-2 border p-2 rounded-3" *ngFor="let item of categories" 
+                        (click)="selectedCategory = item.category_name">
+                            <span>
+                                {{item.category_name}}
+                            </span>
+                        </button> <br>
+
+                        <button class="btn text-success" routerLink="/home"> CANCEL </button>
+                        
+                        <button class="btn text-success" routerLink="/"
+                                (click)="onClick(nameInput,descriptionInput,dateInput,locationInput)">
+                            ADD TASK
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
