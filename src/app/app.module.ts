@@ -5,7 +5,7 @@ import {AngularFirestoreModule} from '@angular/fire/compat/firestore'
 
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
-import { TodoComponent } from './todo/todo.component';
+import { TodoComponent } from './todos/todo/todo.component';
 import { SecurityModule } from './security/security.module';
 import { RouterModule } from '@angular/router';
 
@@ -14,11 +14,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TodosModule } from './todos/todos.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoComponent,
     PageNotFoundComponent
   ],
   imports: [
@@ -29,8 +29,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     SecurityModule,
+    TodosModule,
     RouterModule.forRoot([
-      { path : '', component: TodoComponent},
+      { path : '', redirectTo: 'todo-main', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponent },
     ]),
     BrowserAnimationsModule,

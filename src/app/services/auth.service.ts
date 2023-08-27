@@ -34,7 +34,7 @@ export class AuthService {
   loginWithEmail(email: string, password: string) {
     return this.authFire.signInWithEmailAndPassword(email, password)
       .then((result) => {
-        console.log(JSON.stringify(result));
+        console.log('user', JSON.stringify(result));   
         this.storeUserData(result.user);
         this.router.navigate(['/']);
       });
@@ -42,8 +42,8 @@ export class AuthService {
 
   registerUser(email: string, password: string) {
     return this.authFire.createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        console.log(result.user);
+      .then((result) => {        
+        console.log(result.user);        
         this.storeUserData(result.user);
         this.sendVerificationEmail();
         this.router.navigate(['/verify-user']);
@@ -76,13 +76,10 @@ export class AuthService {
 
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem("user")!);
-    /*
-    if (user !==null && user.emailVerified !== false) {
-      return true;
-    } else {
-      return false;
-    }
-    */
+    console.log('IS LOGGGED IN? ');
+    console.log(user !== null && user.emailVerified !== false ? true : false);
+
+    //return user !== null;
     return user !== null && user.emailVerified !== false ? true : false;
   }
 
