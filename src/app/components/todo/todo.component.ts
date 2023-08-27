@@ -47,7 +47,7 @@ export class TodoComponent {
           this.todoService.addTodoWithUserId(
             userId,
             nameInput.value,
-            descriptionInput.validationMessage,
+            descriptionInput.value,
             dateInput.value,
             locationInput.value,
             this.selectedCategory // Pasar la categoría seleccionada al servicio
