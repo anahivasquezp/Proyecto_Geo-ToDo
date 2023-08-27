@@ -20,6 +20,7 @@ export class TodoService {
     task_date: string,
     //isDone: boolean,
     task_location: string,
+    selectedCategory: string
     ) {
     this.firestoreCollection.add({
       userId: userId,
@@ -28,7 +29,7 @@ export class TodoService {
       task_date: task_date,
       isDone: false,
       task_location: task_location,
-      
+      selectedCategory: selectedCategory,
     });
   }
 
