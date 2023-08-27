@@ -9,13 +9,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     SignUpComponent,
-    VerifyUserComponent
+    VerifyUserComponent,
+    LogoutComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
       {path: 'login', component: LoginComponent},
       {path: 'register-user', component: SignUpComponent},
       {path: 'verify-user', component: VerifyUserComponent},
+      {path: 'logout', component: LogoutComponent},
     ]),
   ],
 })
