@@ -24,17 +24,14 @@
                                 </span>
 
                                 <!-- Actualizar tarea -->
-                                <span class="float-end text-secondary mx-5" routerLink="/update-task">
+                                <span class="float-end text-secondary mx-5" routerLink="/update-task/{{item.id}}">
                                     <i class="fa-solid fa-pen"></i>
                                 </span>
                                 
                                 <!-- Cargo el nombre de la categoria -->
                                 <span class="">
                                     {{item.selectedCategory}}
-                                </span>
-                                
-
-                                
+                                </span>     
                             </span>
                         </li>
                     </ul>

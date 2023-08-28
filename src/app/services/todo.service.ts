@@ -33,6 +33,24 @@ export class TodoService {
     });
   }
 
+  updateTask(
+    id: string,
+    task_name: string, 
+    task_description : string,
+    task_date: string,
+    //isDone: boolean,
+    task_location: string,
+    selectedCategory: string
+    ) {
+    this.firestoreCollection.doc(id).update({
+      task_name: task_name, 
+      task_description : task_description,
+      task_date: task_date,
+      task_location: task_location,
+      selectedCategory: selectedCategory,
+    });
+  }
+
   /*addTodo(title: string) {
     this.afAuth.authState.subscribe(user => {
       if (user) {
@@ -42,12 +60,19 @@ export class TodoService {
     });
   }*/
 
+
+
   updateTodoStatus(id: string, newStatus: boolean) {
     this.firestoreCollection.doc(id).update({ isDone: newStatus });
   }
 
   deleteTodo(id: string) {
     this.firestoreCollection.doc(id).delete();
+  }
+
+  //mirar para mandar al update-task
+  getTaskById(id: string) {
+    this.firestoreCollection.doc(id).get();
   }
 
 }

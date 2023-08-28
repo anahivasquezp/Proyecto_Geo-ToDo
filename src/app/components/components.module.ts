@@ -34,7 +34,7 @@ import { UpdateTodoComponent } from './update-todo/update-todo.component';
       { path : 'home', component: HomeComponent, canActivate: [AuthGuard]},
       { path: 'add-task', component: TodoComponent, canActivate: [AuthGuard]},
       { path: 'add-categories', component: CategoriesComponent, canActivate: [AuthGuard]},   
-      { path: 'update-task', component: UpdateTodoComponent, canActivate: [AuthGuard]},   
+      { path: 'update-task/:idTask', component: UpdateTodoComponent, canActivate: [AuthGuard]},   
     ]),
   ],
   exports: [

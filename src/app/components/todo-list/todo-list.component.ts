@@ -51,5 +51,4 @@ export class TodoListComponent implements OnInit {
     this.todoService.deleteTodo(id);
   }
   
-
 }

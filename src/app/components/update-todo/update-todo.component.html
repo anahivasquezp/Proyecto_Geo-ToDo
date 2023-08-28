@@ -1,1 +1,47 @@
-<p>update-todo works!</p>
+{{taskId}}
+<div class="container">
+    <div class=" justify-content-center">
+        <div class="">
+            <div class="card shadow-lg mt-5">
+                <div class="card-header text-center py-4 border-0">
+                    <h1 class=" fw-bold">Update task</h1>
+                </div>
+                <div class=" p-4">
+                <!-- Inputs para crear nuevas tareas-->
+                    <div class="">
+                        <h1>ID</h1>
+                        <input type="text" class="border-0 py-3 shadow-none" value="{{taskId}}"
+                            placeholder="Name goes here" #idInput>
+                        <h1>Add Name</h1>
+                        <input type="text" class="border-0 py-3 shadow-none" value="{{selectedTask.task_name}}"
+                            placeholder="Name goes here" #nameInput>
+                        <h1>Add Description</h1>
+                        <input type="text" class="border-0 py-3 shadow-none" value="{{selectedTask.task_description}}"
+                        placeholder="Description goes here" #descriptionInput>
+                        <h1>Add date</h1>
+                        <input type="text" class="border-0 py-3 shadow-none" value="{{selectedTask.task_date}}"
+                        placeholder="Date goes here" #dateInput>
+                        <h1>Location</h1> <!-- implementar API-->
+                        <input type="text" class="border-0 py-3 shadow-none" value="{{selectedTask.task_location}}"
+                        placeholder="Location goes here" #locationInput>
+                        
+                        <h1>Categories</h1>
+                        <button class="m-2 border p-2 rounded-3" *ngFor="let item of categories"
+                        (click)="selectedCategory = item.category_name">
+                            <span>
+                                {{item.category_name}}
+                            </span>
+                        </button> <br>
+
+                        <button class="btn text-success" routerLink="/"> CANCEL </button>
+                        
+                        <button class="btn text-success" routerLink="/"
+                                (click)="update(idInput,nameInput,descriptionInput,dateInput,locationInput)">
+                            UPDATE TASK
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
