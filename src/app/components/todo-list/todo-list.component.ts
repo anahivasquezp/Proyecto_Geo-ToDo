@@ -31,18 +31,6 @@ export class TodoListComponent implements OnInit {
       });
     }
 
-  /*onClick(titleInput: HTMLInputElement) {
-    if (titleInput.value) {
-      this.afAuth.authState.subscribe(user => {
-        if (user) {
-          const userId = user.uid;
-          this.todoService.addTodoWithUserId(titleInput.value, userId);
-          titleInput.value = "";
-        }
-      });
-    }
-  }*/
-
   onStatusChange(id: string, newStatus: boolean) {
     this.todoService.updateTodoStatus(id, newStatus);
   }

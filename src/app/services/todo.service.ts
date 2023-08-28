@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import firebase from 'firebase/compat/app';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +12,11 @@ export class TodoService {
     this.firestoreCollection = firestore.collection('prueba');
   }
 
-  addTodoWithUserId(
+  addTask(
     userId: string,
     task_name: string, 
     task_description : string,
     task_date: string,
-    //isDone: boolean,
     task_location: string,
     selectedCategory: string
     ) {
@@ -59,8 +57,6 @@ export class TodoService {
       }
     });
   }*/
-
-
 
   updateTodoStatus(id: string, newStatus: boolean) {
     this.firestoreCollection.doc(id).update({ isDone: newStatus });

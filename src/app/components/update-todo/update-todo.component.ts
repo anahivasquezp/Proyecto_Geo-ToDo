@@ -37,11 +37,12 @@ export class UpdateTodoComponent implements OnInit {
       }
     });
 
-    //Cargar la tarea
+    //Cargar el id de la tarea enviado por params
     this.route.params.subscribe((params:Params)=> {
       this.taskId = params['idTask'];
     })
 
+    //se puede hacer un servicio para hacer el get y solo mandar el id
     this.todoService.firestoreCollection.doc(this.taskId).get().subscribe(snapshot => {
       if (snapshot.exists) {
         this.selectedTask = snapshot.data();
@@ -58,7 +59,8 @@ export class UpdateTodoComponent implements OnInit {
     dateInput: HTMLInputElement,
     locationInput: HTMLInputElement
   ) {
-    if (nameInput.value) { // Asegurarse de que haya una categoría seleccionada
+    if (nameInput.value) {
+      //Revisar si esto sirve
       this.afAuth.authState.subscribe((user) => {
         if (user) {
           const userId = user.uid;

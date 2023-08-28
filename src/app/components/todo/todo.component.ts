@@ -37,13 +37,13 @@ export class TodoComponent implements OnInit{
     nameInput: HTMLInputElement,
     descriptionInput: HTMLInputElement,
     dateInput: HTMLInputElement,
-    locationInput: HTMLInputElement
+    locationInput: HTMLInputElement,
   ) {
     if (nameInput.value && this.selectedCategory) { // Asegurarse de que haya una categoría seleccionada
       this.afAuth.authState.subscribe((user) => {
-        if (user) {
+        if (user && dateInput) {
           const userId = user.uid;
-          this.todoService.addTodoWithUserId(
+          this.todoService.addTask(
             userId,
             nameInput.value,
             descriptionInput.value,
@@ -59,13 +59,5 @@ export class TodoComponent implements OnInit{
         }
       });
     }
-  }
-
-  onStatusChange(id: string, newStatus: boolean) {
-    this.todoService.updateTodoStatus(id, newStatus);
-  }
-
-  onDelete(id: string) {
-    this.todoService.deleteTodo(id);
   }
 }
