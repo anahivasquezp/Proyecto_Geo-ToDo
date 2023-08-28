@@ -20,7 +20,7 @@ export class TodoComponent implements OnInit {
     private todoService: TodoService,
     private categoriesService: CategoriesService,
     private afAuth: AngularFireAuth,
-    private renderer: Renderer2
+   // private renderer: Renderer2
   ) {}
 
   ngOnInit(): void {

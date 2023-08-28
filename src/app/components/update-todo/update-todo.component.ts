@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { TodoService } from '../../services/todo.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { CategoriesService } from 'src/app/services/categories.service';
+
+declare var google: any; // Declaración de la variable global google
 
 @Component({
   selector: 'app-update-todo',
@@ -14,6 +16,8 @@ export class UpdateTodoComponent implements OnInit {
   taskId!: string;
   categories: any[] = [];
   selectedCategory: string = '';
+
+  @ViewChild('locationInput') locationInput!: ElementRef<HTMLInputElement>;
 
   constructor(
     private route: ActivatedRoute,
@@ -48,6 +52,24 @@ export class UpdateTodoComponent implements OnInit {
         this.selectedTask = snapshot.data();
       } else {
         this.selectedTask = null;
+      }
+    });
+  }
+
+  ngAfterViewInit() {
+    this.initAutocomplete();
+  }
+
+  initAutocomplete() {
+    const autocomplete = new google.maps.places.Autocomplete(
+      this.locationInput.nativeElement,
+      { types: ['geocode'] }
+    );
+
+    autocomplete.addListener('place_changed', () => {
+      const place = autocomplete.getPlace();
+      if (place && place.geometry) {
+        console.log(place);
       }
     });
   }
