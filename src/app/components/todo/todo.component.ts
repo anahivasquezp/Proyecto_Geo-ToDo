@@ -1,21 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { CategoriesService } from '../../services/categories.service';
+
+declare var google: any; // Declaración de la variable global google
 
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
   styles: []
 })
-export class TodoComponent implements OnInit{
+export class TodoComponent implements OnInit {
   categories: any[] = [];
-  selectedCategory: string = ''; // Variable para almacenar la categoría seleccionada
+  selectedCategory: string = '';
+
+  @ViewChild('locationInput') locationInput!: ElementRef<HTMLInputElement>;
 
   constructor(
     private todoService: TodoService,
     private categoriesService: CategoriesService,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private renderer: Renderer2
   ) {}
 
   ngOnInit(): void {
@@ -33,13 +38,31 @@ export class TodoComponent implements OnInit{
     });
   }
 
+  ngAfterViewInit() {
+    this.initAutocomplete();
+  }
+
+  initAutocomplete() {
+    const autocomplete = new google.maps.places.Autocomplete(
+      this.locationInput.nativeElement,
+      { types: ['geocode'] }
+    );
+
+    autocomplete.addListener('place_changed', () => {
+      const place = autocomplete.getPlace();
+      if (place && place.geometry) {
+        console.log(place);
+      }
+    });
+  }
+
   onClick(
     nameInput: HTMLInputElement,
     descriptionInput: HTMLInputElement,
     dateInput: HTMLInputElement,
     locationInput: HTMLInputElement,
   ) {
-    if (nameInput.value && this.selectedCategory) { // Asegurarse de que haya una categoría seleccionada
+    if (nameInput.value && this.selectedCategory) {
       this.afAuth.authState.subscribe((user) => {
         if (user && dateInput) {
           const userId = user.uid;
@@ -49,13 +72,13 @@ export class TodoComponent implements OnInit{
             descriptionInput.value,
             dateInput.value,
             locationInput.value,
-            this.selectedCategory // Pasar la categoría seleccionada al servicio
+            this.selectedCategory
           );
           nameInput.value = '';
           descriptionInput.value = '';
           dateInput.value = '';
           locationInput.value = '';
-          this.selectedCategory = ''; // Reiniciar la categoría seleccionada
+          this.selectedCategory = '';
         }
       });
     }
