@@ -51,35 +51,6 @@ export class UpdateTodoComponent implements OnInit {
     });
   }
 
-
-  onClick(
-    nameInput: HTMLInputElement,
-    descriptionInput: HTMLInputElement,
-    dateInput: HTMLInputElement,
-    locationInput: HTMLInputElement
-  ) {
-    if (nameInput.value && this.selectedCategory) { // Asegurarse de que haya una categoría seleccionada
-      this.afAuth.authState.subscribe((user) => {
-        if (user) {
-          const userId = user.uid;
-          this.todoService.addTodoWithUserId(
-            userId,
-            nameInput.value,
-            descriptionInput.value,
-            dateInput.value,
-            locationInput.value,
-            this.selectedCategory // Pasar la categoría seleccionada al servicio
-          );
-          nameInput.value = '';
-          descriptionInput.value = '';
-          dateInput.value = '';
-          locationInput.value = '';
-          this.selectedCategory = ''; // Reiniciar la categoría seleccionada
-        }
-      });
-    }
-  }
-
   update(
     id: HTMLInputElement,
     nameInput: HTMLInputElement,
@@ -87,7 +58,7 @@ export class UpdateTodoComponent implements OnInit {
     dateInput: HTMLInputElement,
     locationInput: HTMLInputElement
   ) {
-    if (nameInput.value && this.selectedCategory) { // Asegurarse de que haya una categoría seleccionada
+    if (nameInput.value) { // Asegurarse de que haya una categoría seleccionada
       this.afAuth.authState.subscribe((user) => {
         if (user) {
           const userId = user.uid;
@@ -97,7 +68,7 @@ export class UpdateTodoComponent implements OnInit {
             descriptionInput.value,
             dateInput.value,
             locationInput.value,
-            this.selectedCategory
+            this.selectedCategory?this.selectedCategory:this.selectedTask.selectedCategory
           );
           nameInput.value = '';
           descriptionInput.value = '';
