@@ -49,4 +49,5 @@ export class TodoService {
   deleteTodo(id: string) {
     this.firestoreCollection.doc(id).delete();
   }
+
 }

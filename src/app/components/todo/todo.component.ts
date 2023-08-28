@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { CategoriesService } from '../../services/categories.service';
@@ -8,8 +8,7 @@ import { CategoriesService } from '../../services/categories.service';
   templateUrl: './todo.component.html',
   styles: []
 })
-export class TodoComponent {
-  todos: any[] = [];
+export class TodoComponent implements OnInit{
   categories: any[] = [];
   selectedCategory: string = ''; // Variable para almacenar la categoría seleccionada
 

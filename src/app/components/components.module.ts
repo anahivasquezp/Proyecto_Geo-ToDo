@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { NavbarComponent } from './navbar/navbar.component';
+import { UpdateTodoComponent } from './update-todo/update-todo.component';
 
 
 
@@ -22,6 +23,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     TodoComponent,
     TodoListComponent,
     NavbarComponent,
+    UpdateTodoComponent,
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     RouterModule.forChild([
       { path : 'home', component: HomeComponent, canActivate: [AuthGuard]},
       { path: 'add-task', component: TodoComponent, canActivate: [AuthGuard]},
-      { path: 'add-categories', component: CategoriesComponent, canActivate: [AuthGuard]},      
+      { path: 'add-categories', component: CategoriesComponent, canActivate: [AuthGuard]},   
+      { path: 'update-task', component: UpdateTodoComponent, canActivate: [AuthGuard]},   
     ]),
   ],
   exports: [
