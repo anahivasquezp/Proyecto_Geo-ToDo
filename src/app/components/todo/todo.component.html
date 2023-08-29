@@ -38,22 +38,24 @@
       <div class="">
         <div class="card shadow-lg mt-5">
           <div class="card-header text-center py-4 border-0">
-            <h1 class="fw-bold">Add new task</h1>
+            <h1 class="fw-bold">ADD NEW TASK</h1>
           </div>
           <div class="p-4">
-            <div class="">
+            <div class="white">
               <h1>Add Name</h1>
               <input type="text" class="border-0 py-3 shadow-none" placeholder="Name goes here" #nameInput>
               <h1>Add Description</h1>
               <input type="text" class="border-0 py-3 shadow-none" placeholder="Description goes here" #descriptionInput>
               <h1>Add date</h1>
-              <input type="date" class="border-0 py-3 shadow-none" placeholder="Date goes here" #dateInput>
+              <input type="date" class="border-0 py-3 shadow-none" style="border-radius: 10px;" placeholder="Date goes here" #dateInput>
               <h1>Location</h1>
               <input type="text" class="border-0 py-3 shadow-none" placeholder="Location goes here" #locationInput>
               
               <h1>Categories</h1>
-              <div class="btn-group">
-                <button class="m-2 border p-2 rounded-circle text-light" *ngFor="let item of categories" 
+              <div>
+                <button *ngFor="let item of categories" 
+                        class="btn-secondary mx-2"
+                        [class.selected]="selectedCategory === item.category_name"
                         [style.backgroundColor]="item.category_color"
                         (click)="selectedCategory = item.category_name; selectedCategoryColor = item.category_color">
                   <span>{{item.category_name}}</span>

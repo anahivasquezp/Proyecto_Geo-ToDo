@@ -2,7 +2,7 @@
     <div class="justify-content-center">
       <div class="card shadow-lg mt-5">
         <div class="card-header text-center py-4 border-0">
-          <h1 class="fw-bold">Add new category</h1>
+          <h1 class="fw-bold">ADD NEW CATEGORY</h1>
         </div>
         <div class="p-4">
           <div class="">
@@ -11,26 +11,26 @@
             <h1>Color</h1>
             <div class="btn-group">
               <button type="button" [class.selected]="selectedColor === '#C70039'" 
-              class="btn btn-secondary rounded-5 mx-2 btn-red"
+              class="btn-secondary rounded-5 mx-2 btn-red"
                       (click)="selectedColor = '#C70039'">R</button>
               <button type="button" [class.selected]="selectedColor === '#216BF5'"
-              class="btn btn-secondary rounded-5 mx-2 btn-blue"
+              class="btn-secondary rounded-5 mx-2 btn-blue"
                       (click)="selectedColor = '#216BF5'">A</button>
               <button type="button" [class.selected]="selectedColor === '#7AD57A'"
-              class="btn btn-secondary rounded-5 mx-2 btn-green"
+              class="btn-secondary rounded-5 mx-2 btn-green"
                       (click)="selectedColor = '#7AD57A'">V</button>
               <button type="button" [class.selected]="selectedColor === '#FFC300'"
-              class="btn btn-secondary rounded-5 mx-2 btn-yellow"
+              class="btn-secondary rounded-5 mx-2 btn-yellow"
                       (click)="selectedColor = '#FFC300'">A</button>
               <button type="button" [class.selected]="selectedColor === '#8821F5'"
-              class="btn btn-secondary rounded-5 mx-2 btn-purple"
+              class="btn-secondary rounded-5 mx-2 btn-purple"
                       (click)="selectedColor = '#8821F5'">P</button>
             </div>
             <br> <br>
             <div class="btn-container">
                 <button class="btn-add-cancel" routerLink="/">CANCEL</button>
                 <button class="btn-add-cancel" routerLink="/"
-                        (click)="onClick(nameInput)">Add Category</button>
+                        (click)="onClick(nameInput)">ADD CATEGORY</button>
             </div>
           </div>
         </div>

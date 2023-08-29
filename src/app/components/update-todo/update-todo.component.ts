@@ -9,7 +9,7 @@ declare var google: any; // Declaración de la variable global google
 @Component({
   selector: 'app-update-todo',
   templateUrl: './update-todo.component.html',
-  styleUrls: ['./update-todo.component.css']
+  styleUrls: ['./update-todo.component.scss']
 })
 export class UpdateTodoComponent implements OnInit {
   selectedTask: any ={};
