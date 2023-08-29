@@ -1,0 +1,19 @@
+.background {
+    background-color: #2A3851;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .flex-half {
+    flex: 1;
+  }
+
+  :host {
+    display: block;
+    background-color: #1C273C;
+    height: 100vh;
+    width: 100%;
+  }
+  

@@ -1,0 +1,55 @@
+:host {
+    display: block;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .categories-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2A3851; /* claro 1 */
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .card-header {
+    background-color: #1C273C;
+    color: white;
+  }
+
+  .card-body{
+    background-color: #4C6284; /* claro 3 */
+  }
+  
+  .list-group-item {
+    background-color: #5D759D; /* claro 2 */
+    color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .btn-add-category {
+    display: block;
+    margin: 0 auto;
+    background-color: #44A0A0; /* claro 2 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .btn-add-category:hover {
+    background-color: #3B8A8A; /* Cambio de color al pasar el mouse */
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+  }
+  
+  

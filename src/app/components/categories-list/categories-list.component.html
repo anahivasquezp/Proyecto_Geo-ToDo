@@ -1,23 +1,22 @@
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <div class="card shadow-lg mt-5">
-                <div class="card-header text-center py-4 border-0">
-                    <h1 class="display-6 fw-bold">Categories</h1>
-                </div>
-                <div class="card-body p-4">
-                    <ul class="list-group">
-                        <!-- Desplegar tareas-->
-                        <li class="list-group-item mb-2 border py-3 rounded-3" *ngFor="let item of categories">
-                            <span>
-                                <!-- Cargo el nombre de la tarea -->
-                                {{item.category_name}}
-                                <!-- Borrar tarea -->
-                            </span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<div class="categories-container">
+    <div class="card shadow-lg">
+      <div class="card-header text-center border-0">
+        <h1 class="display-6 fw-bold">Categories</h1>
+      </div>
+      <div class="card-body p-4">
+        <ul class="list-group">
+            <!-- Desplegar categorias--->
+          <li class="list-group-item mb-2 border py-3 rounded-3" *ngFor="let item of categories">
+            <!-- Cargo el nombre de la categoria -->
+            {{item.category_name}}
+          </li>
+        </ul>
+        <div class="text-center mt-4">
+            <button class="btn-add-category nav-link" routerLink="/add-categories">Add Category</button>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+  
+
+
