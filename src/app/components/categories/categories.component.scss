@@ -1,0 +1,182 @@
+:host {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    background-color: #1C273C;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2A3851; /* claro 1 */
+  }
+
+  .card {
+    width: 100%;
+    max-width:600px;
+    background-color: #4C6284; /* claro 3 */
+  }
+
+  .card-header {
+    background-color: #1C273C;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: space-between; // Para que los botones estén separados
+    margin-bottom: 1rem;
+  }
+  
+  .btn-secondary {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    flex-grow: 1;
+  }
+  
+  /*Boton ROJO*/
+  .btn-red {
+    background-color: #C70039;
+    border: 1px solid #C70039;
+    color: #C70039;
+  }
+
+  .btn-red:hover{
+    background-color: #99032d;
+    color: #99032d;
+    transform: scale(1.05); 
+  }
+
+  .btn-red.selected {
+    background-color: #99032d; 
+    color: #99032d; 
+    border-color: white
+  }
+
+  /*Boton AZUL*/
+  .btn-blue {
+    background-color: #216BF5;
+    border: 1px solid #216BF5;
+    color: #216BF5;
+  }
+
+  .btn-blue:hover{
+    background-color: #133f92;
+    color: #133f92;
+    transform: scale(1.05); 
+  }
+
+  .btn-blue.selected {
+    background-color: #133f92; 
+    color: #133f92;
+    border-color: white
+  }
+
+
+  /*Boton VERDE*/
+  .btn-green {
+    background-color: #7AD57A;
+    border: 1px solid #7AD57A;
+    color: #7AD57A;
+  }
+
+  .btn-green:hover{
+    background-color: #467846;
+    color: #467846;
+    transform: scale(1.05); 
+  }
+  
+  .btn-green.selected {
+    background-color: #467846;
+    color: #467846;
+    border-color: white
+  }
+
+  /*Boton AMARILLO*/
+  .btn-yellow {
+    background-color: #FFC300;
+    border: 1px solid #FFC300;
+    color: #FFC300;
+  }
+
+  .btn-yellow:hover{
+    background-color: #967402;
+    color: #967402;
+    transform: scale(1.05); 
+  }  
+
+  .btn-yellow.selected {
+    background-color: #967402;
+    color: #967402;
+    border-color: white
+  }
+  
+
+  /*Boton PÚRPURA*/
+  .btn-purple {
+    background-color: #8821F5;
+    border: 1px solid #8821F5;
+    color: #8821F5;
+  }
+
+  .btn-purple:hover{
+    background-color: #4b1387;
+    color: #4b1387;
+    transform: scale(1.05); 
+  }  
+
+  .btn-purple.selected {
+    background-color: #4b1387;
+    color: #4b1387;
+    border-color: white
+  }
+  
+  .btn-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+ 
+  .btn-add-cancel {
+    display: block;
+    margin: 0 auto;
+    background-color: #44A0A0; /* claro 2 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .btn-add-cancel:hover {
+    background-color: #3B8A8A; /* Cambio de color al pasar el mouse */
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+  }
+
+  

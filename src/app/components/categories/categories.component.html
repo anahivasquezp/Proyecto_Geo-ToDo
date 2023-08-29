@@ -1,45 +1,40 @@
 <div class="container">
-    <div class=" justify-content-center">
-        <div class="">
-            <div class="card shadow-lg mt-5">
-                <div class="card-header text-center py-4 border-0">
-                    <h1 class=" fw-bold">Add new category</h1>
-                </div>
-                <div class=" p-4">
-                        <!-- Inputs para crear nuevas tareas-->
-                            <div class="">
-                                <h1>Add Name</h1>
-                                <input type="text" class="border-1 p-3 mb-4 shadow-none" 
-                                    placeholder="Name goes here" #nameInput>
-                                <h1>Color</h1>
-                                <!--<input type="text" class="border-0 py-3 shadow-none"
-                                placeholder="Color goes here" #colorInput>-->
-
-                                <!--<select class="border-0 py-3 shadow-none" #colorInput>
-                                    <option value="#C70039">Red</option>
-                                    <option value="#216BF5">Blue</option>
-                                    <option value="#7AD57A">Green</option>
-                                    <option value="#FFC300 ">Yellow</option>
-                                    <option value="#8821F5">Purple</option>
-                                </select>-->
-
-                                <div class="btn-group " role="group">
-                                    <button type="button" class="btn btn-secondary rounded-5 mx-2 btn-red" (click)="selectedColor = '#C70039'">A</button>
-                                    <button type="button" class="btn btn-secondary rounded-5 mx-2 btn-blue" (click)="selectedColor = '#216BF5'">A</button>
-                                    <button type="button" class="btn btn-secondary rounded-5 mx-2 btn-green" (click)="selectedColor = '#7AD57A'">A</button>
-                                    <button type="button" class="btn btn-secondary rounded-5 mx-2 btn-yellow" (click)="selectedColor = '#FFC300'">A</button>
-                                    <button type="button" class="btn btn-secondary rounded-5 mx-2 btn-purple" (click)="selectedColor = '#8821F5'">A</button>
-                                </div> <br> <br>
-
-                                <button class="btn text-success" routerLink="/"> CANCEL </button>
-                                
-                                <button class="btn text-success" routerLink="/"
-                                        (click)="onClick(nameInput)">
-                                    ADD TASK
-                                </button>
-                            </div>
-                </div>
-            </div>
+    <div class="">
+      <div class="card shadow-lg mt-5">
+        <div class="card-header text-center py-4 border-0">
+          <h1 class="fw-bold">Add new category</h1>
         </div>
+        <div class="p-4">
+          <div class="">
+            <h1>Add Name</h1>
+            <input type="text" class="border-1 p-3 mb-4 shadow-none" placeholder="Name goes here" #nameInput>
+            <h1>Color</h1>
+            <div class="btn-group" role="group">
+              <button type="button" [class.selected]="selectedColor === '#C70039'" 
+              class="btn btn-secondary rounded-5 mx-2 btn-red"
+                      (click)="selectedColor = '#C70039'">R</button>
+              <button type="button" [class.selected]="selectedColor === '#216BF5'"
+              class="btn btn-secondary rounded-5 mx-2 btn-blue"
+                      (click)="selectedColor = '#216BF5'">A</button>
+              <button type="button" [class.selected]="selectedColor === '#7AD57A'"
+              class="btn btn-secondary rounded-5 mx-2 btn-green"
+                      (click)="selectedColor = '#7AD57A'">V</button>
+              <button type="button" [class.selected]="selectedColor === '#FFC300'"
+              class="btn btn-secondary rounded-5 mx-2 btn-yellow"
+                      (click)="selectedColor = '#FFC300'">A</button>
+              <button type="button" [class.selected]="selectedColor === '#8821F5'"
+              class="btn btn-secondary rounded-5 mx-2 btn-purple"
+                      (click)="selectedColor = '#8821F5'">P</button>
+            </div>
+            <br> <br>
+            <div class="btn-container">
+                <button class="btn-add-cancel" routerLink="/">CANCEL</button>
+                <button class="btn-add-cancel" routerLink="/"
+                        (click)="onClick(nameInput)">ADD TASK</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 </div>
+  

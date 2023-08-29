@@ -5,14 +5,14 @@ import { CategoriesService } from '../../services/categories.service';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.css']
+  styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent {
   selectedColor: string = '';
 
   constructor(
     private categoriesService: CategoriesService,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
   ) { }
 
   onClick(

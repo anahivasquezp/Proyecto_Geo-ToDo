@@ -1,0 +1,14 @@
+:host {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    background-color: #1C273C;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2A3851; /* claro 1 */
+  }
