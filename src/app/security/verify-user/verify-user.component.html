@@ -1,12 +1,13 @@
-<div>
-    <h3>Gracias por registrase</h3>
-    <div>
-        <p>Se ha enviado un corrreo de verificación</p>
-    </div>
-    <div>
-        No ha recibido su corrreo
-        <button (click) = "resendVerificationCode()">
-            Enviar nuevamente correo de verificacion
-        </button>
-    </div>
-</div>
+<mat-card class="full-screen-card">
+    <mat-card-title style="text-align: center;">Verificación de Usuario</mat-card-title>
+    
+    <mat-card-content class="full-screen-card-content">
+      <div class="verification-container">
+        <h3>¡Gracias por registrarte!</h3>
+        <p>Te hemos enviado un correo de verificación.</p>
+        <p>Si no recibiste el correo, por favor revisa tu bandeja de spam.</p>
+        <button class="resend-button" (click)="resendVerificationCode()">Enviar Correo de Verificación Nuevamente</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  

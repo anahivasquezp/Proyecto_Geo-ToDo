@@ -1,6 +1,10 @@
-<mat-card>
+<mat-card class="full-screen-card">
     <mat-card-title>Registrarse</mat-card-title>
-    <mat-card-content>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <p>Te agradecemos por registrarte. ¡Esperamos que disfrutes de la aplicación!</p>
+    </div>
+
+    <mat-card-content class="full-screen-card-content">
         <form [formGroup]="registerForm" (ngSubmit)="submit()">
             <p *ngIf="error" class="error">
                 {{error}}
@@ -8,7 +12,7 @@
             <p>
                 <mat-form-field>
                     <mat-label>Email del Usuario</mat-label>
-                    <input type="text" id="username" matInput formControlName="username">
+                    <input type="text" id="username" matInput formControlName="username" class="input">
                     <mat-hint *ngIf="registerFormControls.username.invalid 
                         && (registerFormControls.username.dirty || registerFormControls.username.touched)">
                         <div *ngIf="registerFormControls.username.errors?.['required']">
@@ -27,15 +31,15 @@
             <p>
                 <mat-form-field>
                     <mat-label>Clave</mat-label>
-                    <input type="password" id="password" matInput formControlName="password">
+                    <input type="password" id="password" matInput formControlName="password" class="input">
                     <mat-hint *ngIf="registerFormControls.passwordinvalid 
                         && (registerFormControls.passwordirty || registerFormControls.passwordouched)">
                         Clave es requerida
                     </mat-hint>
                 </mat-form-field>
             </p>
-            <div class="button">
-                <button type="submit" mat-button>Registrarse</button>
+            <div class="d-flex justify-content-end mt-3">
+                <button type="submit" class="btn-register">Registrarse</button>
             </div>
         </form>
     </mat-card-content>

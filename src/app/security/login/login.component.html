@@ -1,6 +1,9 @@
-<mat-card>
-    <mat-card-title>Login</mat-card-title>
-    <mat-card-content>
+<mat-card class="full-screen-card">
+    <mat-card-title>Bienvenido</mat-card-title>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <p>Al iniciar sesión, acepta nuestros términos y política de privacidad</p>
+    </div>
+    <mat-card-content class="full-screen-card-content">
         <form [formGroup]="loginForm" (ngSubmit)="submit()">
             <p *ngIf="error" class="error">
                 {{error}}
@@ -8,7 +11,7 @@
             <p>
                 <mat-form-field>
                     <mat-label>Nombre de Usuario</mat-label>
-                    <input type="text" id="username" matInput formControlName="username">
+                    <input type="text" id="username" matInput formControlName="username" class="input">
                     <mat-hint *ngIf="loginFormControls.username.invalid 
                         && (loginFormControls.username.dirty || loginFormControls.username.touched)">
                         <div *ngIf="loginFormControls.username.errors?.['required']">
@@ -27,15 +30,16 @@
             <p>
                 <mat-form-field>
                     <mat-label>Clave</mat-label>
-                    <input type="password" id="password" matInput formControlName="password">
+                    <input type="password" id="password" matInput formControlName="password" class="input">
                     <mat-hint *ngIf="loginFormControls.passwordinvalid 
                         && (loginFormControls.passwordirty || loginFormControls.passwordouched)">
                         Clave es requerida
                     </mat-hint>
                 </mat-form-field>
             </p>
-            <div class="button">
-                <button type="submit">Login</button>
+            <div class="d-flex justify-content-between mt-3">
+                <button type="submit" class="btn-login">Iniciar Sesión</button>
+                <button type="button" class="btn-register nav-link" routerLink="/register-user">Registrarse</button>
             </div>
         </form>
     </mat-card-content>
