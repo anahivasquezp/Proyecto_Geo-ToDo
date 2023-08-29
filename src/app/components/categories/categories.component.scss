@@ -1,12 +1,12 @@
 :host {
-    display: flex;
+    position: absolute;
     height: 100vh;
     width: 100%;
     background-color: #1C273C;
   }
 
   .container {
-    display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -17,6 +17,10 @@
     width: 100%;
     max-width:600px;
     background-color: #4C6284; /* claro 3 */
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .card-header {
@@ -45,8 +49,9 @@
 
   .btn-group {
     display: flex;
-    justify-content: space-between; // Para que los botones estén separados
+    justify-content: space-between;
     margin-bottom: 1rem;
+    border-radius: 50%;
   }
   
   .btn-secondary {

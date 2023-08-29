@@ -1,6 +1,5 @@
-<div class="container">
-    <div class="justify-content-center">
-      <div class="">
+<!--<div class="container">
+    <div class="">
         <div class="card shadow-lg mt-5">
           <div class="card-header text-center py-4 border-0">
             <h1 class="fw-bold">Add new task</h1>
@@ -33,6 +32,45 @@
           </div>
         </div>
       </div>
+    </div>-->
+
+    <div class="container">
+      <div class="">
+        <div class="card shadow-lg mt-5">
+          <div class="card-header text-center py-4 border-0">
+            <h1 class="fw-bold">Add new task</h1>
+          </div>
+          <div class="p-4">
+            <div class="">
+              <h1>Add Name</h1>
+              <input type="text" class="border-0 py-3 shadow-none" placeholder="Name goes here" #nameInput>
+              <h1>Add Description</h1>
+              <input type="text" class="border-0 py-3 shadow-none" placeholder="Description goes here" #descriptionInput>
+              <h1>Add date</h1>
+              <input type="date" class="border-0 py-3 shadow-none" placeholder="Date goes here" #dateInput>
+              <h1>Location</h1>
+              <input type="text" class="border-0 py-3 shadow-none" placeholder="Location goes here" #locationInput>
+              
+              <h1>Categories</h1>
+              <div class="btn-group">
+                <button class="m-2 border p-2 rounded-circle text-light" *ngFor="let item of categories" 
+                        [style.backgroundColor]="item.category_color"
+                        (click)="selectedCategory = item.category_name; selectedCategoryColor = item.category_color">
+                  <span>{{item.category_name}}</span>
+                </button>
+              </div>
+              
+              <div class="btn-container">
+                <button class="btn-add-cancel" routerLink="/">CANCEL</button>
+                <button class="btn-add-cancel" routerLink="/" 
+                        (click)="onClick(nameInput, descriptionInput, dateInput, locationInput)">
+                  ADD TASK
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+    
   

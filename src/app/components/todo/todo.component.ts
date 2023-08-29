@@ -8,7 +8,7 @@ declare var google: any; // Declaración de la variable global google
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
-  styles: []
+  styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
   categories: any[] = [];
