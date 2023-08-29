@@ -1,0 +1,25 @@
+.btn-red{
+    background-color: #C70039;
+    border: 1px solid #C70039;
+    color: #C70039;
+}
+.btn-blue{
+    background-color: #216BF5;
+    border: 1px solid #216BF5;
+    color: #216BF5;
+}
+.btn-green{
+    background-color: #7AD57A;
+    border: 1px solid #7AD57A;
+    color: #7AD57A;
+}
+.btn-yellow{
+    background-color: #FFC300;
+    border: 1px solid #FFC300;
+    color: #FFC300;
+}
+.btn-purple{
+    background-color: #8821F5;
+    border: 1px solid #8821F5;
+    color: #8821F5;
+}

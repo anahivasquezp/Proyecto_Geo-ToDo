@@ -17,7 +17,7 @@
               <input type="text" class="border-0 py-3 shadow-none" placeholder="Location goes here" #locationInput>
               
               <h1>Categories</h1>
-              <button class="m-2 border p-2 rounded-3" *ngFor="let item of categories" 
+              <button class="m-2 border p-2 rounded-3 text-light" *ngFor="let item of categories" 
                       [style.backgroundColor]="item.category_color"
                       (click)="selectedCategory = item.category_name; selectedCategoryColor = item.category_color">
                 <span>{{item.category_name}}</span>

@@ -14,18 +14,27 @@
                                 <h1>Color</h1>
                                 <!--<input type="text" class="border-0 py-3 shadow-none"
                                 placeholder="Color goes here" #colorInput>-->
-                                <select class="border-0 py-3 shadow-none" #colorInput>
+
+                                <!--<select class="border-0 py-3 shadow-none" #colorInput>
                                     <option value="#C70039">Red</option>
                                     <option value="#216BF5">Blue</option>
                                     <option value="#7AD57A">Green</option>
                                     <option value="#FFC300 ">Yellow</option>
                                     <option value="#8821F5">Purple</option>
-                                </select>
+                                </select>-->
+
+                                <div class="btn-group " role="group">
+                                    <button type="button" class="btn btn-secondary rounded-5 mx-2 btn-red" (click)="selectedColor = '#C70039'">A</button>
+                                    <button type="button" class="btn btn-secondary rounded-5 mx-2 btn-blue" (click)="selectedColor = '#216BF5'">A</button>
+                                    <button type="button" class="btn btn-secondary rounded-5 mx-2 btn-green" (click)="selectedColor = '#7AD57A'">A</button>
+                                    <button type="button" class="btn btn-secondary rounded-5 mx-2 btn-yellow" (click)="selectedColor = '#FFC300'">A</button>
+                                    <button type="button" class="btn btn-secondary rounded-5 mx-2 btn-purple" (click)="selectedColor = '#8821F5'">A</button>
+                                </div> <br> <br>
 
                                 <button class="btn text-success" routerLink="/"> CANCEL </button>
                                 
                                 <button class="btn text-success" routerLink="/"
-                                        (click)="onClick(nameInput,colorInput)">
+                                        (click)="onClick(nameInput)">
                                     ADD TASK
                                 </button>
                             </div>

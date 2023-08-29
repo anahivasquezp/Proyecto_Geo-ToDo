@@ -9,7 +9,7 @@ export class TodoService {
   firestoreCollection: AngularFirestoreCollection;
 
   constructor(private firestore: AngularFirestore, private afAuth: AngularFireAuth) {
-    this.firestoreCollection = firestore.collection('prueba');
+    this.firestoreCollection = firestore.collection('tasks');
   }
 
   addTask(

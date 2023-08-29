@@ -8,6 +8,7 @@ import { CategoriesService } from '../../services/categories.service';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent {
+  selectedColor: string = '';
 
   constructor(
     private categoriesService: CategoriesService,
@@ -16,15 +17,15 @@ export class CategoriesComponent {
 
   onClick(
     nameInput: HTMLInputElement, 
-    colorInput: HTMLSelectElement,
+    //colorInput: HTMLSelectElement,
     ) {
-    if (nameInput.value && colorInput.value) {
+    if (nameInput.value && this.selectedColor) {
       this.afAuth.authState.subscribe(user => {
         if (user) {
           const userId = user.uid;
-          this.categoriesService.addCategory(userId, nameInput.value, colorInput.value);
+          this.categoriesService.addCategory(userId, nameInput.value, this.selectedColor);
           nameInput.value = "";
-          colorInput.value = "";
+          this.selectedColor = "";
         }
       });
     }
