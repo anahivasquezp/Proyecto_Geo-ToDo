@@ -13,6 +13,7 @@ declare var google: any; // Declaración de la variable global google
 export class TodoComponent implements OnInit {
   categories: any[] = [];
   selectedCategory: string = '';
+  selectedCategoryColor: string = '';
 
   @ViewChild('locationInput') locationInput!: ElementRef<HTMLInputElement>;
 
@@ -62,7 +63,7 @@ export class TodoComponent implements OnInit {
     dateInput: HTMLInputElement,
     locationInput: HTMLInputElement,
   ) {
-    if (nameInput.value && this.selectedCategory) {
+    if (nameInput.value && this.selectedCategory && this.selectedCategoryColor) {
       this.afAuth.authState.subscribe((user) => {
         if (user && dateInput) {
           const userId = user.uid;
@@ -72,13 +73,15 @@ export class TodoComponent implements OnInit {
             descriptionInput.value,
             dateInput.value,
             locationInput.value,
-            this.selectedCategory
+            this.selectedCategory,
+            this.selectedCategoryColor
           );
           nameInput.value = '';
           descriptionInput.value = '';
           dateInput.value = '';
           locationInput.value = '';
           this.selectedCategory = '';
+          this.selectedCategoryColor = '';
         }
       });
     }

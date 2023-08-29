@@ -16,9 +16,9 @@ export class CategoriesComponent {
 
   onClick(
     nameInput: HTMLInputElement, 
-    colorInput: HTMLInputElement,
+    colorInput: HTMLSelectElement,
     ) {
-    if (nameInput.value) {
+    if (nameInput.value && colorInput.value) {
       this.afAuth.authState.subscribe(user => {
         if (user) {
           const userId = user.uid;

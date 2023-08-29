@@ -12,8 +12,15 @@
                                 <input type="text" class="border-1 p-3 mb-4 shadow-none" 
                                     placeholder="Name goes here" #nameInput>
                                 <h1>Color</h1>
-                                <input type="text" class="border-0 py-3 shadow-none"
-                                placeholder="Color goes here" #colorInput>
+                                <!--<input type="text" class="border-0 py-3 shadow-none"
+                                placeholder="Color goes here" #colorInput>-->
+                                <select class="border-0 py-3 shadow-none" #colorInput>
+                                    <option value="red">Red</option>
+                                    <option value="blue">Blue</option>
+                                    <option value="green">Green</option>
+                                    <option value="yellow">Yellow</option>
+                                    <option value="purple">Purple</option>
+                                  </select>
 
                                 <button class="btn text-success" routerLink="/"> CANCEL </button>
                                 

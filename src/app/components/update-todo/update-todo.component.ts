@@ -16,6 +16,7 @@ export class UpdateTodoComponent implements OnInit {
   taskId!: string;
   categories: any[] = [];
   selectedCategory: string = '';
+  selectedCategoryColor: string = '';
 
   @ViewChild('locationInput') locationInput!: ElementRef<HTMLInputElement>;
 
@@ -92,13 +93,15 @@ export class UpdateTodoComponent implements OnInit {
             descriptionInput.value,
             dateInput.value,
             locationInput.value,
-            this.selectedCategory?this.selectedCategory:this.selectedTask.selectedCategory
+            this.selectedCategory?this.selectedCategory:this.selectedTask.selectedCategory,
+            this.selectedCategoryColor?this.selectedCategoryColor:this.selectedTask.selectedCategoryColor
           );
           nameInput.value = '';
           descriptionInput.value = '';
           dateInput.value = '';
           locationInput.value = '';
           this.selectedCategory = '';
+          this.selectedCategoryColor = '';
         }
       });
     }

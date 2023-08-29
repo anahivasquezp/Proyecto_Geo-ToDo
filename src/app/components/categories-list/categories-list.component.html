@@ -6,7 +6,8 @@
       <div class="card-body p-4">
         <ul class="list-group">
             <!-- Desplegar categorias--->
-          <li class="list-group-item mb-2 border py-3 rounded-3" *ngFor="let item of categories">
+          <li class="list-group-item mb-2 border py-3 rounded-3" *ngFor="let item of categories"
+          [style.backgroundColor]="item.category_color">
             <!-- Cargo el nombre de la categoria -->
             {{item.category_name}}
           </li>

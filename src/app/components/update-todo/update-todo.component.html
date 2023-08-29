@@ -27,7 +27,8 @@
                         
                         <h1>Categories</h1>
                         <button class="m-2 border p-2 rounded-3" *ngFor="let item of categories"
-                        (click)="selectedCategory = item.category_name">
+                        [style.backgroundColor]="item.category_color"
+                        (click)="selectedCategory = item.category_name; selectedCategoryColor = item.category_color">
                             <span>
                                 {{item.category_name}}
                             </span>
