@@ -24,22 +24,28 @@ export class FilterCategoriesComponent implements OnInit {
     this.route.params.subscribe((params:Params)=> {
       this.selectedCategory = params['categoryName'];
       console.log(this.selectedCategory);
+      this.getTaskbyCategory();
     })
 
     //Cargamos las task con esa categoria
+    
+
+  }
+
+  getTaskbyCategory(){
     this.afAuth.authState.subscribe(user => {
       if (user) {
         const userId = user.uid;
         this.todoService.firestoreCollection
           .valueChanges({ idField: 'id' })
           .subscribe(items => {
+            console.log("Items cargados");
             this.todos = items
               .filter(item => item.userId === userId && item.selectedCategory === this.selectedCategory)
               .sort((a: any, b: any) => a.isDone - b.isDone);
           });
       }
     });
-
   }
 
   onStatusChange(id: string, newStatus: boolean) {
