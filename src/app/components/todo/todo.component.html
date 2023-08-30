@@ -21,7 +21,7 @@
                         class="btn-secondary mx-2"
                         [class.selected]="selectedCategory === item.category_name"
                         [style.backgroundColor]="item.category_color"
-                        (click)="selectedCategory = item.category_name; selectedCategoryColor = item.category_color; ">
+                        (click)="selectedCategory = item.category_name; selectedCategoryColor = item.category_color; selectedIdCategory = item.id">
                   <span>{{item.category_name}}</span>
                 </button>
               </div>

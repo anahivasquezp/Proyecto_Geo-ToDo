@@ -18,9 +18,9 @@ export class TodoService {
     task_description : string,
     task_date: string,
     task_location: string,
-    //id_c
-    selectedCategory: string,
-    selectedCategoryColor: string
+    id_category: string,
+    category_name: string,
+    category_color: string
     ) {
     this.firestoreCollection.add({
       userId: userId,
@@ -29,8 +29,9 @@ export class TodoService {
       task_date: task_date,
       isDone: false,
       task_location: task_location,
-      selectedCategory: selectedCategory,
-      selectedCategoryColor: selectedCategoryColor,
+      id_category: id_category,
+      selectedCategory: category_name,
+      selectedCategoryColor: category_color,
     });
   }
 
@@ -41,6 +42,7 @@ export class TodoService {
     task_date: string,
     //isDone: boolean,
     task_location: string,
+    id_category: string,
     selectedCategory: string,
     selectedCategoryColor: string
     ) {
@@ -49,6 +51,7 @@ export class TodoService {
       task_description : task_description,
       task_date: task_date,
       task_location: task_location,
+      id_category: id_category,
       selectedCategory: selectedCategory,
       selectedCategoryColor: selectedCategoryColor,
     });

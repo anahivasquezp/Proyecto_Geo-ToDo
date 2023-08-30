@@ -12,6 +12,7 @@ declare var google: any; // Declaración de la variable global google
 })
 export class TodoComponent implements OnInit {
   categories: any[] = [];
+  selectedIdCategory: string = '';
   selectedCategory: string = '';
   selectedCategoryColor: string = '';
 
@@ -63,7 +64,7 @@ export class TodoComponent implements OnInit {
     dateInput: HTMLInputElement,
     locationInput: HTMLInputElement,
   ) {
-    if (nameInput.value && this.selectedCategory && this.selectedCategoryColor) {
+    if (nameInput.value && this.selectedCategory && this.selectedCategoryColor && this.selectedIdCategory) {
       this.afAuth.authState.subscribe((user) => {
         if (user && dateInput) {
           const userId = user.uid;
@@ -73,6 +74,7 @@ export class TodoComponent implements OnInit {
             descriptionInput.value,
             dateInput.value,
             locationInput.value,
+            this.selectedIdCategory,
             this.selectedCategory,
             this.selectedCategoryColor
           );
@@ -80,6 +82,7 @@ export class TodoComponent implements OnInit {
           descriptionInput.value = '';
           dateInput.value = '';
           locationInput.value = '';
+          this.selectedIdCategory = '';
           this.selectedCategory = '';
           this.selectedCategoryColor = '';
         }
