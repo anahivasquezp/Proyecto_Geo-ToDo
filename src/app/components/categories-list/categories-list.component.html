@@ -1,12 +1,14 @@
 <div class="categories-container">
     <div class="card shadow-lg">
       <div class="card-header text-center border-0">
-        <h1 class="display-6 fw-bold">Categories</h1>
+        <h1 class="display-6 fw-bold" routerLink="/home">Categories</h1>
       </div>
       <div class="card-body p-4">
         <ul class="list-group">
             <!-- Desplegar categorias--->
-          <li class="list-group-item mb-2 border py-3 rounded-3" *ngFor="let item of categories"
+          <li class="list-group-item mb-2 border py-3 rounded-3 text-center fw-bold" 
+          *ngFor="let item of categories"
+          routerLink="/home/{{ item.category_name }}"
           [style.backgroundColor]="item.category_color">
             <!-- Cargo el nombre de la categoria -->
             {{item.category_name}}

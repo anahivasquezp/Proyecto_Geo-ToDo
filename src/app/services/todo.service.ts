@@ -18,6 +18,7 @@ export class TodoService {
     task_description : string,
     task_date: string,
     task_location: string,
+    //id_c
     selectedCategory: string,
     selectedCategoryColor: string
     ) {
@@ -57,7 +58,7 @@ export class TodoService {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         const userId = user.uid;
-        this.addTodoWithUserId(title, userId);
+        this.addTask(title, userId);
       }
     });
   }*/

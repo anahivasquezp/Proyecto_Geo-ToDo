@@ -1,0 +1,92 @@
+.background {
+    background-color: #2A3851;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .flex-half {
+    flex: 1;
+  }
+
+  :host {
+    display: block;
+    background-color: #1C273C;
+    height: 100vh;
+    width: 100%;
+  }
+
+  :host {
+    display: block;
+    height: 100vh;
+    width: 100%;
+}
+
+.text-success{
+    font-size: 1.5em;
+    margin-right: 10px;
+    background-color: white;
+    border-radius: 20px
+}
+
+.text-secondary i{
+    color: white;
+}
+
+.tasks-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2A3851; /* claro 1 */
+}
+
+.card {
+    width: 100%;
+    max-width: 400px;
+}
+
+.card-header {
+    background-color: #1C273C;
+    color: white;
+}
+
+.card-body {
+    background-color: #4C6284; /* claro 3 */
+}
+
+.list-group-item {
+    background-color: #5D759D; /* claro 2 */
+    color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.category-selected{
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #1C273C; /* Color de fondo */
+    color: white;
+    border: 1px solid white; /* Borde blanco */
+    border-radius: 5px;
+}
+
+.btn-add-task {
+    display: block;
+    margin: 0 auto;
+    background-color: #44A0A0; /* claro 2 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-add-task:hover {
+    background-color: #3B8A8A; /* Cambio de color al pasar el mouse */
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+}

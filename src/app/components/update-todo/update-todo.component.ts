@@ -48,9 +48,9 @@ export class UpdateTodoComponent implements OnInit {
     })
 
     //se puede hacer un servicio para hacer el get y solo mandar el id
-    this.todoService.firestoreCollection.doc(this.taskId).get().subscribe(snapshot => {
-      if (snapshot.exists) {
-        this.selectedTask = snapshot.data();
+    this.todoService.firestoreCollection.doc(this.taskId).get().subscribe(document => {
+      if (document.exists) {
+        this.selectedTask = document.data();
       } else {
         this.selectedTask = null;
       }
