@@ -84,17 +84,13 @@ export class UpdateTodoComponent implements OnInit {
     locationInput: HTMLInputElement
   ) {
     if (nameInput.value) {
-      //Revisar si esto sirve
-      this.afAuth.authState.subscribe((user) => {
-        if (user) {
-          const userId = user.uid;
           this.todoService.updateTask(
             id.value,
             nameInput.value,
             descriptionInput.value,
             dateInput.value,
             locationInput.value,
-            this.selectedIdCategory?this.selectedIdCategory:this.selectedTask.is_category,
+            this.selectedIdCategory?this.selectedIdCategory:this.selectedTask.id_category,
             this.selectedCategory?this.selectedCategory:this.selectedTask.selectedCategory,
             this.selectedCategoryColor?this.selectedCategoryColor:this.selectedTask.selectedCategoryColor
           );
@@ -105,9 +101,6 @@ export class UpdateTodoComponent implements OnInit {
           this.selectedIdCategory = '';
           this.selectedCategory = '';
           this.selectedCategoryColor = '';
-        }
-      });
     }
   }
-
 }
