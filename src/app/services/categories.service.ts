@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,7 @@ export class CategoriesService {
     this.firestoreCollection = firestore.collection('categories');
   }
 
+  //Añadir Categoria
   addCategory(
     userId: string,
     category_name: string, 
@@ -24,6 +27,14 @@ export class CategoriesService {
     });
   }
 
-
+  //Obtener categorias por el id de un usuario
+  getCategoriesByUserId(userId: string): Observable<any[]> {
+    return this.firestoreCollection.valueChanges({ idField: 'id' })
+      .pipe(
+        map((items: any[]) => {
+          return items.filter(item => item.userId === userId)
+        })
+      );
+  }
   
 }

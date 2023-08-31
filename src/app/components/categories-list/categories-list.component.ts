@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { CategoriesService } from '../../services/categories.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-categories-list',
@@ -10,25 +11,21 @@ import { CategoriesService } from '../../services/categories.service';
 export class CategoriesListComponent implements OnInit {
 
   categories: any[] = [];
+  userId!: string;
 
   constructor(
     private categoriesService: CategoriesService,
-    private afAuth: AngularFireAuth
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        const userId = user.uid;
-        this.categoriesService.firestoreCollection
-          .valueChanges({ idField: 'id' })
-          .subscribe(items => {
-            this.categories = items
-              .filter(item => item.userId === userId)
-              .sort((a: any, b: any) => a.isDone - b.isDone);
-          });
-      }
-    });
+    //Cargar el ID del usuario
+    this.userId = this.authService.getAuthenticatedUserId();
+    //Cargar tareas 
+    this.categoriesService.getCategoriesByUserId(this.userId)
+      .subscribe((filteredCategories: any[]) => {
+        this.categories = filteredCategories;
+      });
   }
 
 }

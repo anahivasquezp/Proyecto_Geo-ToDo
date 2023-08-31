@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +41,6 @@ export class TodoService {
     task_name: string, 
     task_description : string,
     task_date: string,
-    //isDone: boolean,
     task_location: string,
     id_category: string,
     selectedCategory: string,
@@ -58,15 +57,6 @@ export class TodoService {
     });
   }
 
-  /*addTodo(title: string) {
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        const userId = user.uid;
-        this.addTask(title, userId);
-      }
-    });
-  }*/
-
   updateTodoStatus(id: string, newStatus: boolean) {
     this.firestoreCollection.doc(id).update({ isDone: newStatus });
   }
@@ -76,10 +66,28 @@ export class TodoService {
   }
 
   //mirar para mandar al update-task
-  getTaskById(id: string) {
-    this.firestoreCollection.doc(id).get();
+  getTaskById(id: string): Observable<any> {
+    return this.firestoreCollection.doc(id).get();
   }
 
+  //Obtener tareas por el id de un usuario
+  getTasksByUserId(userId: string): Observable<any[]> {
+    return this.firestoreCollection.valueChanges({ idField: 'id' })
+      .pipe(
+        map((items: any[]) => {
+          return items.filter(item => item.userId === userId)
+        })
+      );
+  }
+
+  //Obtener tareas filtradas por el nombre de la categoria
+  getFilteredTasksByCategories(userId: string, selectedCategory: string): Observable<any[]> {
+    return this.firestoreCollection.valueChanges({ idField: 'id' }).pipe(
+      map((items: any[]) => {
+        return items.filter(item => item.userId === userId && item.selectedCategory === selectedCategory)
+      })
+    );
+  }
   
 
 }

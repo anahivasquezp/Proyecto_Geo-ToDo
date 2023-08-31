@@ -1,8 +1,8 @@
-import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { TodoService } from '../../services/todo.service';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { CategoriesService } from 'src/app/services/categories.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 declare var google: any; // Declaración de la variable global google
 
@@ -12,6 +12,7 @@ declare var google: any; // Declaración de la variable global google
   styleUrls: ['./update-todo.component.scss']
 })
 export class UpdateTodoComponent implements OnInit {
+  userId!: string;
   selectedTask: any ={};
   taskId!: string;
   categories: any[] = [];
@@ -24,32 +25,26 @@ export class UpdateTodoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private todoService: TodoService,
-    private afAuth: AngularFireAuth,
     private categoriesService: CategoriesService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
-    //Cargar categorias
-    this.afAuth.authState.subscribe((user) => {
-      if (user) {
-        const userId = user.uid;
-        this.categoriesService.firestoreCollection
-          .valueChanges({ idField: 'id' })
-          .subscribe((items) => {
-            this.categories = items
-              .filter((item) => item.userId === userId)
-              .sort((a: any, b: any) => a.isDone - b.isDone);
-          });
-      }
-    });
+    //Cargar el ID del usuario
+    this.userId = this.authService.getAuthenticatedUserId();
+    //Cargar tareas 
+    this.categoriesService.getCategoriesByUserId(this.userId)
+      .subscribe((filteredCategories: any[]) => {
+        this.categories = filteredCategories;
+      });
 
     //Cargar el id de la tarea enviado por params
     this.route.params.subscribe((params:Params)=> {
       this.taskId = params['idTask'];
     })
 
-    //se puede hacer un servicio para hacer el get y solo mandar el id
-    this.todoService.firestoreCollection.doc(this.taskId).get().subscribe(document => {
+    //Obtener la tarea que se desea actualizar en base al id del param
+    this.todoService.getTaskById(this.taskId).subscribe(document => {
       if (document.exists) {
         this.selectedTask = document.data();
       } else {

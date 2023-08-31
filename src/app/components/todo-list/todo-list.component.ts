@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -10,25 +10,21 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class TodoListComponent implements OnInit {
 
   todos: any[] = [];
+  userId!: string;
 
   constructor(
     private todoService: TodoService,
-    private afAuth: AngularFireAuth
+    private authService: AuthService,
     ) { }
 
     ngOnInit(): void {
-      this.afAuth.authState.subscribe(user => {
-        if (user) {
-          const userId = user.uid;
-          this.todoService.firestoreCollection
-            .valueChanges({ idField: 'id' })
-            .subscribe(items => {
-              this.todos = items
-                .filter(item => item.userId === userId)
-                .sort((a: any, b: any) => a.isDone - b.isDone);
-            });
-        }
-      });
+      //Cargar el ID del usuario
+      this.userId = this.authService.getAuthenticatedUserId();
+      //Cargar tareas 
+      this.todoService.getTasksByUserId(this.userId)
+        .subscribe((filteredTasks: any[]) => {
+          this.todos = filteredTasks;
+        });
     }
 
   onStatusChange(id: string, newStatus: boolean) {

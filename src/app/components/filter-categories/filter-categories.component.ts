@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ActivatedRoute, Params } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
@@ -11,40 +11,26 @@ import { TodoService } from 'src/app/services/todo.service';
 export class FilterCategoriesComponent implements OnInit {
   selectedCategory!: string;
   todos: any[] = [];
+  userId!: string;
 
   constructor(
     private route: ActivatedRoute,
-    private afAuth: AngularFireAuth,
     private todoService: TodoService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
-
+    //Cargar el ID del usuario
+    this.userId = this.authService.getAuthenticatedUserId();
     //Cargar el nombre de la categoria enviado por params
     this.route.params.subscribe((params:Params)=> {
       this.selectedCategory = params['categoryName'];
       console.log(this.selectedCategory);
-      this.getTaskbyCategory();
-    })
-
-    //Cargamos las task con esa categoria
-    
-
-  }
-
-  getTaskbyCategory(){
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        const userId = user.uid;
-        this.todoService.firestoreCollection
-          .valueChanges({ idField: 'id' })
-          .subscribe(items => {
-            console.log("Items cargados");
-            this.todos = items
-              .filter(item => item.userId === userId && item.selectedCategory === this.selectedCategory)
-              .sort((a: any, b: any) => a.isDone - b.isDone);
-          });
-      }
+      //Cargamos las tareas con el id y la categoria
+      this.todoService.getFilteredTasksByCategories(this.userId, this.selectedCategory)
+        .subscribe((filteredTasks: any[]) => {
+          this.todos = filteredTasks;
+        });
     });
   }
 

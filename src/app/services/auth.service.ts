@@ -101,6 +101,14 @@ export class AuthService {
     });
   }
 
+  getAuthenticatedUserId(): string {
+    if (this.userData) {
+      return this.userData.uid;
+    } else {
+      const user = JSON.parse(localStorage.getItem("user")!);
+      return user ? user.uid : null;
+    }
+  }
   
 
 }

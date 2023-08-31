@@ -1,33 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { CategoriesService } from '../../services/categories.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss']
 })
-export class CategoriesComponent {
+export class CategoriesComponent implements OnInit {
+
+  userId!: string;
   selectedColor: string = '';
 
   constructor(
     private categoriesService: CategoriesService,
-    private afAuth: AngularFireAuth,
+    private authService: AuthService,
   ) { }
+
+  ngOnInit(): void {
+    //Cargar el id del usuario autenticado
+    this.userId = this.authService.getAuthenticatedUserId();
+  }
 
   onClick(
     nameInput: HTMLInputElement, 
-    //colorInput: HTMLSelectElement,
     ) {
     if (nameInput.value && this.selectedColor) {
-      this.afAuth.authState.subscribe(user => {
-        if (user) {
-          const userId = user.uid;
-          this.categoriesService.addCategory(userId, nameInput.value, this.selectedColor);
-          nameInput.value = "";
-          this.selectedColor = "";
-        }
-      });
+          this.categoriesService.addCategory(this.userId, nameInput.value, this.selectedColor);
     }
   }
 

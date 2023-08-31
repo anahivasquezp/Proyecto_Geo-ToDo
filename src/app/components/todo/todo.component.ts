@@ -1,7 +1,7 @@
-import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { CategoriesService } from '../../services/categories.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 declare var google: any; // Declaración de la variable global google
 
@@ -11,6 +11,7 @@ declare var google: any; // Declaración de la variable global google
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
+  userId!: string;
   categories: any[] = [];
   selectedIdCategory: string = '';
   selectedCategory: string = '';
@@ -21,23 +22,17 @@ export class TodoComponent implements OnInit {
   constructor(
     private todoService: TodoService,
     private categoriesService: CategoriesService,
-    private afAuth: AngularFireAuth,
-   // private renderer: Renderer2
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
-    this.afAuth.authState.subscribe((user) => {
-      if (user) {
-        const userId = user.uid;
-        this.categoriesService.firestoreCollection
-          .valueChanges({ idField: 'id' })
-          .subscribe((items) => {
-            this.categories = items
-              .filter((item) => item.userId === userId)
-              .sort((a: any, b: any) => a.isDone - b.isDone);
-          });
-      }
-    });
+    //Cargar el ID del usuario
+    this.userId = this.authService.getAuthenticatedUserId();
+    //Cargar tareas 
+    this.categoriesService.getCategoriesByUserId(this.userId)
+      .subscribe((filteredCategories: any[]) => {
+        this.categories = filteredCategories;
+      });
   }
 
   ngAfterViewInit() {
@@ -64,12 +59,9 @@ export class TodoComponent implements OnInit {
     dateInput: HTMLInputElement,
     locationInput: HTMLInputElement,
   ) {
-    if (nameInput.value && this.selectedCategory && this.selectedCategoryColor && this.selectedIdCategory) {
-      this.afAuth.authState.subscribe((user) => {
-        if (user && dateInput) {
-          const userId = user.uid;
+    if (nameInput.value && this.selectedCategory && this.selectedCategoryColor && this.selectedIdCategory) { //Acabar de hacer estos
           this.todoService.addTask(
-            userId,
+            this.userId,
             nameInput.value,
             descriptionInput.value,
             dateInput.value,
@@ -78,15 +70,6 @@ export class TodoComponent implements OnInit {
             this.selectedCategory,
             this.selectedCategoryColor
           );
-          nameInput.value = '';
-          descriptionInput.value = '';
-          dateInput.value = '';
-          locationInput.value = '';
-          this.selectedIdCategory = '';
-          this.selectedCategory = '';
-          this.selectedCategoryColor = '';
-        }
-      });
+      }
     }
-  }
 }
