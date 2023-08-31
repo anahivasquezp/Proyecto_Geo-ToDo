@@ -81,7 +81,7 @@ export class TodoService {
   }
 
   //Obtener tareas filtradas por el nombre de la categoria
-  getFilteredTasksByCategories(userId: string, selectedCategory: string): Observable<any[]> {
+  getTasksByCategories(userId: string, selectedCategory: string): Observable<any[]> {
     return this.firestoreCollection.valueChanges({ idField: 'id' }).pipe(
       map((items: any[]) => {
         return items.filter(item => item.userId === userId && item.selectedCategory === selectedCategory)

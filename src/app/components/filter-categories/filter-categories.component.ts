@@ -27,7 +27,7 @@ export class FilterCategoriesComponent implements OnInit {
       this.selectedCategory = params['categoryName'];
       console.log(this.selectedCategory);
       //Cargamos las tareas con el id y la categoria
-      this.todoService.getFilteredTasksByCategories(this.userId, this.selectedCategory)
+      this.todoService.getTasksByCategories(this.userId, this.selectedCategory)
         .subscribe((filteredTasks: any[]) => {
           this.todos = filteredTasks;
         });
