@@ -16,4 +16,23 @@
     height: 100vh;
     width: 100%;
   }
+
+  .btn-logout {
+    background-color: #44A0A0; /* Color de fondo original */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    display: right;
+    justify-content: space-between; 
+    align-items: center;
+  }
+  
+  .btn-logout:hover {
+    background-color: #3B8A8A;
+    transform: scale(1.05);
+  }
   

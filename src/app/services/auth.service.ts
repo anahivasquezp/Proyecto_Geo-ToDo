@@ -96,7 +96,7 @@ export class AuthService {
   logout() {
     this.authFire.signOut().then(() => {
       console.log('SIGN OUT');
-      localStorage.removeITem('user');
+      localStorage.removeItem('user');
       this.router.navigate(['/login']);
     });
   }
