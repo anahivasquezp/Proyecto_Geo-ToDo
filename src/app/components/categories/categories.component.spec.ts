@@ -61,8 +61,7 @@ describe('CategoriesComponent', () => {
   
   it('should not call addCategory when onClick is called with invalid input', () => {
     const nameInput = document.createElement('input');
-    nameInput.value = ''; // Nombre de categoría vacío
-    component.selectedColor = 'blue';
+    nameInput.value = ''; //Simular que no se ha introducido un nombre de categoria
 
     component.onClick(nameInput);
 
