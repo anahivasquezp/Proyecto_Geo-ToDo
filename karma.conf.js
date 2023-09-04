@@ -40,7 +40,12 @@ module.exports = function (config) {
       autoWatch: true,
       browsers: ['Edge'],
       singleRun: false,
-      restartOnFileChange: true
+      restartOnFileChange: true,
+      files: [
+        // Agrega los archivos de AngularFire y Firebase aquí
+        'node_modules/firebase/firebase.js',
+        'node_modules/@angular/fire/__ivy_ngcc__/bundles/angular-fire.umd.js',
+      ],
     });
   };
   
