@@ -22,6 +22,8 @@
     "@angular/router": "^14.2.0",
     "angularfire2": "^5.4.2",
     "firestore": "^1.1.6",
+    "helmet-csp": "^3.4.0",
+    "ngx-cookie-service": "^1.0.10",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
